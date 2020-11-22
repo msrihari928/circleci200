@@ -6,10 +6,24 @@ orbs:
   node: circleci/node@4.1.0
   # Declare a dependency on the welcome-orb
   welcome: circleci/welcome-orb@0.4.1
-# Adding Cron job
+
 nightly:
-   triggers:
-       - cron: "2 * * * *"
+  triggers:
+    - schedule:
+        cron: "2 0 * * *"
+        filters:
+          branches:
+            only:
+              - master
+#First - minute
+# second - hour
+# Day of month
+# Month
+# day of week
+# * 1 * * * => Every one hour
+# 10 * * * * => Every 10 mins
+# * * * * 1 => Every Monday
+
 # Orchestrate or schedule a set of jobs
 workflows:
   # Name the workflow "welcome"
