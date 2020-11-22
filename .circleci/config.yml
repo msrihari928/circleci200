@@ -2,6 +2,8 @@
 version: 2.1
 # Use a package of configuration called an orb.
 orbs:
+  # Declare node.js orb
+  node: circleci/node@4.1.0
   # Declare a dependency on the welcome-orb
   welcome: circleci/welcome-orb@0.4.1
 # Orchestrate or schedule a set of jobs
