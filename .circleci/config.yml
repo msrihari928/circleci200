@@ -1,33 +1,16 @@
 # Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
-# Use a package of configuration called an orb.
 orbs:
-  # Declare node.js orb
-  node: circleci/node@4.1.0
-  # Declare a dependency on the welcome-orb
-  welcome: circleci/welcome-orb@0.4.1
-
-nightly:
-  triggers:
-    - schedule:
-        cron: "2 0 * * *"
-        filters:
-          branches:
-            only:
-              - master
-#First - minute
-# second - hour
-# Day of month
-# Month
-# day of week
-# * 1 * * * => Every one hour
-# 10 * * * * => Every 10 mins
-# * * * * 1 => Every Monday
-
-# Orchestrate or schedule a set of jobs
-workflows:
-  # Name the workflow "welcome"
-  welcome:
-    # Run the welcome/run job in its own container
-    jobs:
-      - welcome/run
+  newman: postman/newman@0.0.2
+jobs:
+  newman-collection-run:
+    # use the official newman docker image via newman/postman-newman-docker executor
+    executor: newman/postman-newman-docker
+    
+    steps:
+      # checkout step is optional if you are not referencing any files from the project
+      - checkout
+      
+      # use newman-run command
+      - newman/newman-run:
+          collection: ./postman_automation/Organization-Dev.postman_collection.json environment: ./postman_automation/OrgDevTest.postman_environment.json
