@@ -7,4 +7,4 @@ jobs:
     steps:
       - checkout
       - newman/newman-run:
-          collection: ./Org_service_postman_automation/Organization-Dev.postman_collection.json -e ./Org_service_postman_automation/OrgDevTest.postman_environment.json
+          collection: ./Org_service_postman_automation/Organization-Dev.postman_collection.json -e ./Org_service_postman_automation/OrgDevTest.postman_environment.json -r cli,junit
