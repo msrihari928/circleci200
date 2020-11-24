@@ -1,0 +1,949 @@
+{
+	"info": {
+		"_postman_id": "0a843439-c6cd-48a5-94cd-d11d82ad018a",
+		"name": "Org Service Automation - Temp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Tokens Copy",
+			"item": [
+				{
+					"name": "Get Token of Company Owner",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b3984283-7636-4be4-b89e-a222ad8144c4",
+								"exec": [
+									"pm.environment.set(\"username\", \"lfu4\");\r",
+									"pm.environment.set(\"password\", \"DRftgyhu@12\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "e31e220f-b209-4d76-990c-2c4b98ebef0a",
+								"exec": [
+									"let jsonData = pm.response.json();\r",
+									"\r",
+									"pm.globals.set(\"co_token\", jsonData.id_token);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{Authorization}}",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"grant_type\": \"http://auth0.com/oauth/grant-type/password-realm\",\r\n    \"realm\": \"Username-Password-Authentication\",\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"client_id\": \"hquZHO8JNsaIScoayPtCS5VELdn7TnVq\",\r\n    \"audience\": \"https://api-gw.dev.platform.linuxfoundation.org/\",\r\n    \"scope\": \"access:api openid profile email\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://linuxfoundation-dev.auth0.com/oauth/token",
+							"protocol": "https",
+							"host": [
+								"linuxfoundation-dev",
+								"auth0",
+								"com"
+							],
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Token of Superadmin",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "42c914f5-7f08-480a-af7d-ceb3369a32af",
+								"exec": [
+									"pm.environment.set(\"username\", \"yogesh.chaudhari\");\r",
+									"pm.environment.set(\"password\", \"DRftgyhu@12\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "8fb68a67-5a54-44a7-b23e-9cc5e90e002c",
+								"exec": [
+									"let jsonData = pm.response.json();\r",
+									"\r",
+									"pm.globals.set(\"s_admin_token\", jsonData.id_token);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{Authorization}}",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"grant_type\": \"http://auth0.com/oauth/grant-type/password-realm\",\r\n    \"realm\": \"Username-Password-Authentication\",\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"client_id\": \"hquZHO8JNsaIScoayPtCS5VELdn7TnVq\",\r\n    \"audience\": \"https://api-gw.dev.platform.linuxfoundation.org/\",\r\n    \"scope\": \"access:api openid profile email\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://linuxfoundation-dev.auth0.com/oauth/token",
+							"protocol": "https",
+							"host": [
+								"linuxfoundation-dev",
+								"auth0",
+								"com"
+							],
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Token of User",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a62e50f1-ebab-47c0-8044-428a8afaecee",
+								"exec": [
+									"pm.environment.set(\"username\", \"lfu2\");\r",
+									"pm.environment.set(\"password\", \"DRftgyhu@12\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "d618f4aa-1aaf-4321-8e14-6da98e71868b",
+								"exec": [
+									"let jsonData = pm.response.json();\r",
+									"\r",
+									"pm.globals.set(\"user_token\", jsonData.id_token);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{Authorization}}",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"grant_type\": \"http://auth0.com/oauth/grant-type/password-realm\",\r\n    \"realm\": \"Username-Password-Authentication\",\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"client_id\": \"hquZHO8JNsaIScoayPtCS5VELdn7TnVq\",\r\n    \"audience\": \"https://api-gw.dev.platform.linuxfoundation.org/\",\r\n    \"scope\": \"access:api openid profile email\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://linuxfoundation-dev.auth0.com/oauth/token",
+							"protocol": "https",
+							"host": [
+								"linuxfoundation-dev",
+								"auth0",
+								"com"
+							],
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Token of LF Program Manager",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "140ed09d-3e1f-4d95-984f-ecb7f5c8bab8",
+								"exec": [
+									"pm.environment.set(\"username\", \"lfu36\");\r",
+									"pm.environment.set(\"password\", \"DRftgyhu@12\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "0d0b5ae0-5c97-4028-afe1-ffce570f57cd",
+								"exec": [
+									"let jsonData = pm.response.json();\r",
+									"\r",
+									"pm.globals.set(\"lf_pm_token\", jsonData.id_token);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{Authorization}}",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"grant_type\": \"http://auth0.com/oauth/grant-type/password-realm\",\r\n    \"realm\": \"Username-Password-Authentication\",\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"client_id\": \"hquZHO8JNsaIScoayPtCS5VELdn7TnVq\",\r\n    \"audience\": \"https://api-gw.dev.platform.linuxfoundation.org/\",\r\n    \"scope\": \"access:api openid profile email\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://linuxfoundation-dev.auth0.com/oauth/token",
+							"protocol": "https",
+							"host": [
+								"linuxfoundation-dev",
+								"auth0",
+								"com"
+							],
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Token of Community Manager",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "3f088d59-27ff-4484-8f21-7335716a4608",
+								"exec": [
+									"pm.environment.set(\"username\", \"lfu5\");\r",
+									"pm.environment.set(\"password\", \"DRftgyhu@12\");"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "eea014c0-7148-4495-a232-0ac913abe36d",
+								"exec": [
+									"let jsonData = pm.response.json();\r",
+									"\r",
+									"pm.globals.set(\"com_mngr_token\", jsonData.id_token);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{Authorization}}",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"grant_type\": \"http://auth0.com/oauth/grant-type/password-realm\",\r\n    \"realm\": \"Username-Password-Authentication\",\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"client_id\": \"hquZHO8JNsaIScoayPtCS5VELdn7TnVq\",\r\n    \"audience\": \"https://api-gw.dev.platform.linuxfoundation.org/\",\r\n    \"scope\": \"access:api openid profile email\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://linuxfoundation-dev.auth0.com/oauth/token",
+							"protocol": "https",
+							"host": [
+								"linuxfoundation-dev",
+								"auth0",
+								"com"
+							],
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "My Organization Copy",
+			"item": [
+				{
+					"name": "My Organization with new user",
+					"item": [
+						{
+							"name": "Get My Organization for new user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7b692b3a-9f62-4f2e-940d-f02b7493fcb9",
+										"exec": [
+											"pm.test(\"Get My Organization : 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"let jsonData = pm.response.json();\r",
+											"console.log(jsonData.ID);\r",
+											"pm.test(\"Default Organization appearing in response\", function () {\r",
+											"   pm.expect(jsonData.ID).to.eql('0014100000Te04HAAR');\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{user_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{BaseURL}}/me",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"me"
+									],
+									"query": [
+										{
+											"key": "basic",
+											"value": "false",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "New user should get blank response for My Organization",
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Verify restricted fields with User",
+					"item": [
+						{
+							"name": "Don't display restricted fields to User role",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "37d50c18-3a81-462c-a897-5f937a703629",
+										"exec": [
+											"let jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Restricted field Owner is not visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.Owner != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(false);\r",
+											"});\r",
+											"pm.test(\"Restricted field Phone is not visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.Phone != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(false);\r",
+											"});\r",
+											"pm.test(\"Restricted field Source is not visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.Source != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(false);\r",
+											"});\r",
+											"pm.test(\"Restricted field Industry is not visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.Industry != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(false);\r",
+											"});\r",
+											"pm.test(\"Restricted field LastModifiedBy is not visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.LastModifiedBy != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(false);\r",
+											"});\r",
+											"pm.test(\"Restricted field LastModifiedAt is not visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.LastModifiedAt != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(false);\r",
+											"});\r",
+											"pm.test(\"Restricted field CreatedAt is not visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.CreatedAt != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(false);\r",
+											"});\r",
+											"pm.test(\"Restricted field BillingAddress is visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.BillingAddress != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(true);\r",
+											"});\r",
+											"pm.test(\"Restricted field Link is visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.Link != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(true);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{user_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{BaseURL}}/me",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"me"
+									],
+									"query": [
+										{
+											"key": "basic",
+											"value": "false",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "User role should not view restricted fields in response body",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6868e074-85b4-4e96-abeb-69d33ba30205",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "0b38e6ac-539a-463e-b759-1740c2eaddaf",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Verify restricted fields with Company Owner",
+					"item": [
+						{
+							"name": "Display Restricted fields to Company Owner",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "dd55abef-2314-4b66-aef1-2c41e7a56ca0",
+										"exec": [
+											"\r",
+											"let jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Restricted field Owner is visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.Owner.Name != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(true);\r",
+											"});\r",
+											"pm.test(\"Restricted field Phone is visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.Phone != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(true);\r",
+											"});\r",
+											"pm.test(\"Restricted field Source is visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.Source != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(true);\r",
+											"});\r",
+											"pm.test(\"Restricted field Industry is visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.Industry != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(true);\r",
+											"});\r",
+											"pm.test(\"Restricted field LastModifiedBy is visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.LastModifiedBy != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(true);\r",
+											"});\r",
+											"pm.test(\"Restricted field LastModifiedAt is visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.LastModifiedAt != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(true);\r",
+											"});\r",
+											"pm.test(\"Restricted field CreatedAt is visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.CreatedAt != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(true);\r",
+											"});\r",
+											"pm.test(\"Restricted field BillingAddress is visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.BillingAddress != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(true);\r",
+											"});\r",
+											"pm.test(\"Restricted field Link is visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.Link != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(true);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{co_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{BaseURL}}/me",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"me"
+									],
+									"query": [
+										{
+											"key": "basic",
+											"value": "false",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Community manager should get assigned organization details in response",
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Verify restricted fields with LF Program Manager",
+					"item": [
+						{
+							"name": "Display Restricted fields to LF Program Manager",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "25ab12bb-a19c-4495-98ad-7172ab37a23e",
+										"exec": [
+											"\r",
+											"let jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Restricted field Owner is visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.Owner.Name != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(true);\r",
+											"});\r",
+											"pm.test(\"Restricted field Phone is visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.Phone != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(true);\r",
+											"});\r",
+											"pm.test(\"Restricted field Source is visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.Source != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(true);\r",
+											"});\r",
+											"pm.test(\"Restricted field Industry is visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.Industry != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(true);\r",
+											"});\r",
+											"pm.test(\"Restricted field LastModifiedBy is visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.LastModifiedBy != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(true);\r",
+											"});\r",
+											"pm.test(\"Restricted field LastModifiedAt is visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.LastModifiedAt != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(true);\r",
+											"});\r",
+											"pm.test(\"Restricted field CreatedAt is visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.CreatedAt != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(true);\r",
+											"});\r",
+											"pm.test(\"Restricted field BillingAddress is visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.BillingAddress != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(true);\r",
+											"});\r",
+											"pm.test(\"Restricted field Link is visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.Link != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(true);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{lf_pm_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{BaseURL}}/me",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"me"
+									],
+									"query": [
+										{
+											"key": "basic",
+											"value": "false",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Community manager should get assigned organization details in response",
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "My Organization with Community Manager",
+					"item": [
+						{
+							"name": "Get My Organization for Community Manager",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "cf4e7546-92f8-4889-85eb-4ef769cd688c",
+										"exec": [
+											"pm.test(\"Get My Organization : 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"let jsonData = pm.response.json();\r",
+											"console.log(jsonData.ID);\r",
+											"pm.test(\"Assigned Organization appearing in response\", function () {\r",
+											"   pm.expect(jsonData.ID).to.eql('0016s000004DlBwAAK');\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{com_mngr_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{BaseURL}}/me",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"me"
+									],
+									"query": [
+										{
+											"key": "basic",
+											"value": "false",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Community manager should get assigned organization details in response",
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "My Organization with invalid token",
+					"item": [
+						{
+							"name": "My Organization with invalid token should give 401",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "07ab5a1e-b917-47fd-b943-bf9cc6533a2e",
+										"exec": [
+											"pm.test(\"Invalid token : 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Valid Error Message\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"This is invalid token, please provide the valid token\");\r",
+											"}); "
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer 123"
+									}
+								],
+								"url": {
+									"raw": "{{BaseURL}}/me",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"me"
+									],
+									"query": [
+										{
+											"key": "basic",
+											"value": "false",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Community manager should get assigned organization details in response",
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "My Organization with basic filter",
+					"item": [
+						{
+							"name": "My Organization with basic filter true",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3cf37fc8-c3ca-459b-a80f-46a81d7d3066",
+										"exec": [
+											"let jsonData = pm.response.json();\r",
+											"pm.test(\"Permission object should not be visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.Permissions != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(false);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{com_mngr_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{BaseURL}}/me?basic=true",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"me"
+									],
+									"query": [
+										{
+											"key": "basic",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "My Organization with basic filter false",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "eeb33011-c209-4380-b05d-b375262e6e4e",
+										"exec": [
+											"let jsonData = pm.response.json();\r",
+											"pm.test(\"Permission object should be visible\", function () {\r",
+											"    var flag = false;\r",
+											"    if (jsonData.Permissions != null )\r",
+											"    {  flag = true;}\r",
+											"    pm.expect(flag).to.eql(true);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{com_mngr_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{BaseURL}}/me?basic=false",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"me"
+									],
+									"query": [
+										{
+											"key": "basic",
+											"value": "false"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Community manager should get assigned organization details in response",
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"description": "Test My Organization endpoints",
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
