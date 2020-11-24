@@ -13,6 +13,6 @@ jobs:
       
       # use newman-run command
       - newman/newman-run:
-          collection: ./postman_automation/Organization-Dev.postman_collection.json environment: ./postman_automation/OrgDevTest.postman_environment.json
+          collection: ./postman_automation/Organization-Dev.postman_collection.json -e ./postman_automation/OrgDevTest.postman_environment.json
           # need to add reporting format
           # cron job details
