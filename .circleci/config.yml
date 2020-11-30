@@ -5,13 +5,13 @@ orbs:
   slack: circleci/slack@3.4.2
   
 nightly:
-   triggers:
-     - schedule:
-         - cron: "1 * * * *"
-           filters:
-             branches:
-               only:
-                 - master
+  triggers:
+    - schedule:
+        cron: "12 0 * * *"
+        filters:
+          branches:
+            only:
+              - master
 
 jobs:
   #newman-collection-run:
