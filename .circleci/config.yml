@@ -30,7 +30,7 @@ jobs:
           additional-options: -r cli,junit          
 workflows:
   version: 2
-  Postman collection Org Service for Dev Env:
+  Postman collection Org Service:
     jobs:
       - newman-collection-run-Dev
       - newman-collection-run-Stage
