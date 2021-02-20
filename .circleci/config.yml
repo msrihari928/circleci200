@@ -3,6 +3,10 @@ version: 2.1
 orbs:
   newman: postman/newman@0.0.2
 
+nightly:
+  triggers:
+      - cron "10 * * * * " 
+
 jobs:
   newman-collection-run-Dev:
     executor: newman/postman-newman-docker
