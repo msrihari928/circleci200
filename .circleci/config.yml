@@ -35,10 +35,12 @@ workflows:
       - newman-collection-run-Dev
       - newman-collection-run-Stage
       - newman-collection-run-Prod
+    # The cron format is:
+    # min (0-59) hour (0-23) monthday (1-31) month (1-12) weekday (0-6, 0=Sun)
     triggers:
       - schedule:
           cron: "10 * * * *"
           filters:
             branches:
               only:
-                - master 
+                - master
