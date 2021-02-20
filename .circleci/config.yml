@@ -20,5 +20,5 @@ jobs:
     steps:
       - checkout
       - newman/newman-run:
-          name: Postman Collection - Org Service
+#          name: "Postman Collection - Org Service"
           collection: ./Org_service_postman_automation/Organization-Dev.postman_collection.json -e ./Org_service_postman_automation/OrgDevTest.postman_environment.json
