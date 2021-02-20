@@ -4,7 +4,7 @@ orbs:
   newman: postman/newman@0.0.2
 
 jobs:
-  newman-collection-run:
+  newman-collection-run-Dev:
     executor: newman/postman-newman-docker
     steps:
       - checkout
@@ -12,9 +12,26 @@ jobs:
           collection: ./Org_service_postman_automation/Organization-Dev.postman_collection.json
           environment: ./Org_service_postman_automation/OrgDevTest.postman_environment.json
           additional-options: -r cli,junit
-
+  newman-collection-run-Stage:
+    executor: newman/postman-newman-docker
+    steps:
+      - checkout
+      - newman/newman-run:
+          collection: ./Org_service_postman_automation/Organization-Dev.postman_collection.json
+          environment: ./Org_service_postman_automation/OrgDevTest.postman_environment.json
+          additional-options: -r cli,junit
+  newman-collection-run-Prod:
+    executor: newman/postman-newman-docker
+    steps:
+      - checkout
+      - newman/newman-run:
+          collection: ./Org_service_postman_automation/Organization-Dev.postman_collection.json
+          environment: ./Org_service_postman_automation/OrgDevTest.postman_environment.json
+          additional-options: -r cli,junit          
 workflows:
   version: 2
   Postman collection Org Service for Dev Env:
     jobs:
-      - newman-collection-run
+      - newman-collection-run-Dev
+      - newman-collection-run-Stage
+      - newman-collection-run-Prod
