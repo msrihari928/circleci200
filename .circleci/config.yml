@@ -37,7 +37,7 @@ workflows:
       - newman-collection-run-Prod
     triggers:
       - schedule:
-          cron: "10 * * * *"
+          cron: "30 * * * *"
           filters:
             branches:
               only:
