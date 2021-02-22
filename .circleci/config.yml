@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   newman: postman/newman@0.0.2
+  slack: circleci/slack@3.4.2
 
 jobs:
   newman-collection-run-Dev:
@@ -12,6 +13,10 @@ jobs:
           collection: ./Org_service_postman_automation/Organization-Dev.postman_collection.json
           environment: ./Org_service_postman_automation/OrgDevTest.postman_environment.json
           additional-options: -r cli,junit
+      - slack/status:
+                failure_message: Org Service-Dev Failed
+                success_message: Org Service-Dev Success
+
   newman-collection-run-Stage:
     executor: newman/postman-newman-docker
     steps:
@@ -20,6 +25,10 @@ jobs:
           collection: ./Org_service_postman_automation/Organization-Dev.postman_collection.json
           environment: ./Org_service_postman_automation/OrgDevTest.postman_environment.json
           additional-options: -r cli,junit
+      - slack/status:
+                failure_message: Org Service-Stage Failed
+                success_message: Org Service-Stage Success
+
   newman-collection-run-Prod:
     executor: newman/postman-newman-docker
     steps:
@@ -27,7 +36,11 @@ jobs:
       - newman/newman-run:
           collection: ./Org_service_postman_automation/Organization-Dev.postman_collection.json
           environment: ./Org_service_postman_automation/OrgDevTest.postman_environment.json
-          additional-options: -r cli,junit          
+          additional-options: -r cli,junit        
+      - slack/status:
+                failure_message: Org Service-Prod Failed
+                success_message: Org Service-Prod Success
+
 workflows:
   version: 2
   Postman collection Org Service:
